@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: LogisticsMcpServer
+  ai:
+    mcp:
+      server:
+        enabled: true
+        capabilities:
+          completion: true
+          tool: true
+          resource: true
+          prompt: true
+        type: sync
+        streamable-http:
+          mcp-endpoint: /mcp
+        name: mcp-server
+        version: 1.0.0
+        request-timeout: 20s
