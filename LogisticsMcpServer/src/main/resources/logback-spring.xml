@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Định dạng log chuẩn cho hệ thống[cite: 2] -->
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- Cấu hình ConsoleAppender ghi dữ liệu vào Standard Error (System.err)[cite: 2] -->
+    <appender name="STDERR_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- ĐIỂM QUAN TRỌNG: Chuyển hướng đích xuất từ System.out sang System.err[cite: 2] -->
+        <target>System.err</target>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- Thiết lập mức log chi tiết cho các package[cite: 2] -->
+    <logger name="com.rikkei.mcp" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="io.modelcontextprotocol" level="DEBUG"/>
+
+    <!-- Root Logger tiếp nhận các mức INFO, WARN, ERROR và xuất qua STDERR_APPENDER[cite: 2] -->
+    <root level="INFO">
+        <appender-ref ref="STDERR_APPENDER"/>
+    </root>
+</configuration>
